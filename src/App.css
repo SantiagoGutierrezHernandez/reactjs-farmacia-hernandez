@@ -36,3 +36,459 @@
     transform: rotate(360deg);
   }
 }
+
+/*=====================SECCION DE ETIQUETAS=========================*/
+/*Establecer un tamaño de fuente predeterminado*/
+html {
+  font-size: 62.5%;
+  color: black;
+}
+
+/*Establecer una fuente predeterminada para el html*/
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/*Hacer que al entrar a la página el fondo del título cambie gradualmente y poner altura minima*/
+header {
+  transition: background-color 1s;
+}
+
+/*Evitar que el título sea más grande que el contenedor*/
+header .row {
+  max-width: 100%;
+}
+
+/*Agregar sombras a los elementos*/
+iframe, .medium-image, .table-icon, .title-image, .subtitle, .content-box, .nav-box, ul li ul {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+/*Limitar tamaño de los iframe*/
+iframe {
+  max-width: 80%;
+  max-height: 80vh;
+}
+
+/*Reemplazar la enumeración de las listas*/
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  list-style-type: disc;
+  color: black;
+}
+
+/*Estilizar links y eliminar el subrayado*/
+a {
+  font-weight: bold;
+  text-decoration-line: none;
+  width: fit-content;
+}
+
+/*Separar elementos de lista del footer y quitarles el disco*/
+footer ul li {
+  margin: 1rem;
+  list-style-type: none;
+}
+
+/*Desplegar dropdown al hacerle hover*/
+ul li:hover ul {
+  display: block;
+}
+
+p, a, li {
+  font-size: 1.6rem;
+}
+
+form{
+  font-size: 1.6rem;
+}
+/*=====================SECCION DE IDs===============================*/
+#no-results{
+  color: white;
+  text-align: center;
+  display: none;
+}
+/*Estilo del botón de compra*/
+#cart-buy{
+  min-width: 15rem;
+  min-height: 7.5rem;
+  font-size: 2rem;
+}
+/*Sección del carrito*/
+#carrito{
+  overflow-x: scroll;
+}
+/*Tabla del carrito*/
+#cart-products{
+  background-color: #ececec;
+  width: max-content;
+  margin: 0 auto;
+}
+/*Estilo de la notificación*/
+#notification-popup{
+  box-shadow: 0px 0px 20px 20px rgb(0 0 0 / 50%);
+  padding: 5rem;
+  position: fixed;
+  left: 50%; top: 50%;
+  min-width: 50vh; min-height: 30vh;
+  width: fit-content;
+  max-width: 80vh; max-height: 80vh;
+  background-color: gainsboro;
+  transform: translate(-50%, -50%);
+  border-radius: 5rem;
+  z-index: 999;
+  overflow: hidden;
+  display: none;
+}
+#notification-popup .notification-close{
+  position: relative;
+  background-color: gainsboro;
+  border: none;
+  left: 100%;
+  top: 10%;
+  font-size: 2rem;
+  font-weight: 900;
+  color: grey;
+  transition: color 0.3s linear;
+  transform: translate(-50%, -50%);
+}
+#notification-popup .notification-close:hover{
+  color: black;
+}
+#notification-popup .notification-text{
+  text-align: justify;
+}
+/*Estilo de la barra de páginas*/
+#page-index{
+  width: fit-content;
+  height: 3rem;
+  font-size: 1.6rem;
+  border-radius: .5rem;
+  background-color: #eee;
+  text-align: center;
+}
+#last-page{
+  font-size: 1.6rem;
+}
+/*=====================SECCION DE CLASES============================*/
+/*Estilizar la barra de navegación*/
+.nav-box {
+  z-index: 10;
+  transition: 0.25s transform ease-in-out;
+}
+.nav-box .nav-item {
+  transition: background-color 0.25s ease-in-out;
+  width: 100%;
+  padding: 1rem;
+  position: relative;
+}
+.nav-box .nav-item .nav-text {
+  font-size: 1.6rem;
+  font-family: "Playfair Display", serif;
+  margin: 0 auto;
+  color: gainsboro;
+  transition: color 0.25s ease-in-out;
+}
+.nav-box .nav-item .nav-border-bottom {
+  background-color: gainsboro;
+  transition: background-color 0.25s ease-in-out, transform 0.25s ease-in-out;
+  position: absolute;
+  width: 100%;
+  height: 0.5rem;
+  bottom: 0%;
+  transform: scaleX(0);
+}
+.nav-box .nav-item:hover .nav-text, .nav-box .nav-item:focus .nav-text {
+  color: white;
+}
+.nav-box .nav-item:hover .nav-border-bottom, .nav-box .nav-item:focus .nav-border-bottom {
+  background-color: white;
+  transform: scaleX(1);
+}
+/*Cambiar el color de parrafos largos*/
+.description {
+  text-align: justify;
+  font-size: 1.6rem;
+}
+
+/*Establecer tamaños y margenes de imágenes*/
+.social-logo {
+  width: 5rem;
+}
+
+/*Alinear y separar íconos con su texto*/
+.icon-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-text img {
+  margin-right: 1rem;
+}
+
+.title-box {
+  width: 100%;
+  min-width: 260px;
+  min-height: 30vh;
+}
+
+.content-box {
+  padding: 3.75rem;
+  margin: 0;
+  width: 100%;
+  min-width: 260px;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 4rem;
+  overflow-wrap: break-word;
+  text-align: center;
+  font-weight: bolder;
+  font-family: "Playfair Display", serif;
+  color: white;
+}
+
+.subtitle {
+  padding: 1rem 2rem;
+  margin: 2rem;
+  font-size: 3rem;
+  overflow-wrap: break-word;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  place-self: center;
+  text-align: center;
+  color: white;
+}
+
+/*Cambiar valores de las cards*/
+.card-section {
+  padding: 1rem;
+  border: #141414 solid 1px;
+  border-radius: 5px;
+  margin: 2.5%;
+}
+.card-section .row .card {
+  margin: 0.3rem;
+  border: 2px solid rgba(20, 20, 20, 0.5);
+  transition: transform 0.3s;
+}
+.card-section .row .card:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+.card{
+  border-radius: .25rem;
+  margin: 1rem auto !important;
+  min-width: 33%;
+  max-width: 90%;
+}
+.card-item {
+  border: 1px solid rgba(20, 20, 20, 0.5) !important;
+  border-radius: 5px;
+}
+
+/*Colores de texto*/
+.c-light {
+  color: white;
+}
+
+.c-medium {
+  color: #2f4b4e;
+}
+
+.c-dark {
+  color: #111a1e;
+}
+
+/*Fondos sin gradiente*/
+.light-background {
+  background-color: #ececec;
+}
+
+.medium-background {
+  background-color: #c69d81;
+}
+
+.dark-background {
+  background-color: #553528;
+}
+
+.alpha-background {
+  background-color: #ececec80;
+}
+
+.alpha-dark-bg {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.black-background {
+  background-color: black;
+}
+
+/*Fondos con gradiente*/
+.background-gradient {
+  background-image: linear-gradient(to bottom, #ececec, #ececec80);
+}
+
+.gradient-dark {
+  background-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.2));
+}
+
+/*Hacer el cambio de fondo en hover una trancisión*/
+.color-hoverable {
+  transition: 0.2s background-color;
+}
+
+/*Estilizar links*/
+.link {
+  color: black;
+  width: fit-content;
+}
+
+/*Hacer que el elemento parezca un botón*/
+.button-light {
+  background-color: #ececec;
+  transition: 0.2s background-color;
+  font-size: 1.6rem;
+  padding: 1rem;
+  margin: 1rem;
+  box-sizing: border-box;
+  border-radius: 2.55rem;
+}
+.button-light:hover, .button-light:focus {
+  background-color: #e1f8d3;
+}
+
+.button-dark {
+  background-color: #553528;
+  transition: 0.2s background-color;
+  font-size: 1.6rem;
+  padding: 1rem;
+  margin: 1rem;
+  box-sizing: border-box;
+  border-radius: 2.55rem;
+}
+.button-dark:hover, .button-dark:focus {
+  background-color: #447e74;
+}
+
+.row {
+  /*Evitar que elementos se salgan del body*/
+  max-width: 100%;
+  /*Quitarle los margenes (Se manejaran según los elementos para evitar desplazamientos)*/
+  margin: 0;
+}
+/*Helpers de position*/
+.top-left{
+  top:0%;
+  left: 0%;
+}
+.top-center{
+  margin: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+/*Agregar ancho minimo a contenedores*/
+.min-w{
+  min-width: 260px;
+}
+/*Ajustar el tamaño de un elemento según su contenido*/
+.fit{
+  width: fit-content;
+  height: fit-content;
+}
+/*Sobreescribir tamaños de texto de forms*/
+.form-select, .form-control{
+  font-size: 1.6rem;
+}
+/*Estilo de la parte del carrito de las cards*/
+.card-to-cart{
+  margin-top: .5rem; margin-bottom: .5rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.card-product-amount{
+  width: 5rem;
+  height: 3rem;
+  font-size: 1.6rem;
+  border-radius: .5rem;
+  background-color: #eee;
+  text-align: center;
+}
+.card-add-button{
+  background-color: green;
+  padding: .5rem 2rem;
+  border-radius: 2rem;
+}
+.card-add-button img{
+  height: 4rem;
+}
+/*Estilo de la cabecera del carrito */
+.cart-header{
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 2rem 0;
+  border-bottom: black 2px solid;
+  margin: 1rem 0 0 0;
+}
+/*Estilo de la barra de páginas*/
+.page-arrow{
+  margin: 0 0.5rem;
+  font-size: 5rem;
+  font-weight: bolder;
+  border: none;
+  transition: color 0.3s;
+}
+.page-arrow:hover{
+  color: darkgrey;
+}
+/*=====================SECCION DE ANIMACIONES=======================*/
+@keyframes logo-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.animation-logo:hover, .animation-logo:focus {
+  animation: infinite 1s logo-rotate linear;
+}
+
+/*=====================MEDIA QUERIES================================*/
+/*Eliminar la barra en dispositivos en los que podria obstruir gran parte de la pantalla*/
+@media only screen and (max-width: 250px) {
+  .nav-box {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 500px) {
+  /*Evitar que el header quede más pequeño que el título*/
+  header {
+    min-height: max-content;
+  }
+}
+@media only screen and (max-width: 768px) {
+/*Hacer el gradiente mas claro en dispositivos en los que se veria mas "apretado"*/
+  .gradient-dark{
+    background-image: linear-gradient(to bottom, rgba(0,0,0,1),rgba(0,0,0,0));
+  }
+}
+/*Evitar que el título desborde verticalmente*/
+@media only screen and (max-height: 200px) {
+  header {
+    height: 100% !important;
+  }
+}
