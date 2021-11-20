@@ -1,7 +1,9 @@
-function Navbar(){
+import CartWidget from "./CartWidget";
+import brand from "../images/brand.png"
+const Navbar = () =>{
     return (
     <nav className="nav-box d-none d-sm-flex black-background sticky-top flex-row align-items-center justify-content-between">
-        <img className="nav-item" style={{height: "45px", width: "auto", padding: "0"}} src="images/brand.png" alt=""/>
+        <img className="nav-item" style={{height: "45px", width: "auto", padding: "0"}} src={brand} alt="Farmacia Hernandez"/>
         <a href="#inicio" className="nav-item text-center d-flex justify-content-center">
             <span className="nav-text">Home</span>
             <div className="nav-border-bottom"></div>
@@ -22,6 +24,7 @@ function Navbar(){
             <span className="nav-text">Mi Carrito</span>
             <div className="nav-border-bottom"></div>
         </a>
+        <CartWidget/>
     </nav>
     );
 }
