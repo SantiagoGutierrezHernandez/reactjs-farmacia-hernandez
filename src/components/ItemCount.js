@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Counter from "./Counter";
 
 const ItemCount = ({stock, initial})=>{
@@ -10,7 +10,6 @@ const ItemCount = ({stock, initial})=>{
     }
     //Estado de la cantidad
     const [amount, setAmount] = useState(clamp(initial, 1, stock))
-
     
     //Creación del elemento 
     return (

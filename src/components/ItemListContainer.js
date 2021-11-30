@@ -1,22 +1,28 @@
-import ItemCount from "./ItemCount"
+import ItemList from "./ItemList"
+import { useState } from "react"
 
 const ItemListContainer = ()=>{
     const products = [
-    {name: "Prod1", stock: 4},
-    {name: "Prod2", stock: 3},
-    {name: "Prod3", stock: 7}
+    {name: "Crema de limpieza", stock: 4, price: 230.5, img:"/images/crema-limpieza.jpg"},
+    {name: "Agua de rosas", stock: 3, price: 320, img:"/images/agua-rosas.jpg"},
+    {name: "Crema antiage con acido hialuronico", stock: 7, price: 460.5, img:"/images/crema-antiage-hialuronico.jpg"}
 ]
 
+    const getProducts = new Promise((resolve) => {
+        setTimeout(()=>{resolve(products)}, 2000)
+    })
+
+    const [items, setItems] = useState([])
+    
+    getProducts.then(result => {
+        setItems(result)
+    })
+
     return (
-        <ul>
-            {products.map((product)=>{
-                return <li style={{backgroundColor:"lightgray", margin:"1rem auto", padding:"1rem", width:"fit-content", listStyle:"none", borderRadius:"1rem"}}>
-                    <div>{product.name}</div>
-                    <ItemCount initial={1} stock={product.stock} />
-                    <button style={{border:"cornflowerblue", borderRadius:"1rem"}}>Agregar al carrito</button>
-                </li>
-            })}
-        </ul>
+        <container>
+            <ItemList items={items}/>
+        </container>
     )
 }
+
 export default ItemListContainer;
