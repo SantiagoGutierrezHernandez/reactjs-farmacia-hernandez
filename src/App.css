@@ -47,6 +47,7 @@ html {
 /*Establecer una fuente predeterminada para el html*/
 body {
   font-family: "Roboto", sans-serif;
+  background-color: cornflowerblue;
 }
 
 /*Hacer que al entrar a la página el fondo del título cambie gradualmente y poner altura minima*/

@@ -1,15 +1,9 @@
 import ItemList from "./ItemList"
 import { useState } from "react"
 
-const ItemListContainer = ()=>{
-    const products = [
-    {name: "Crema de limpieza", stock: 4, price: 230.5, img:"/images/crema-limpieza.jpg"},
-    {name: "Agua de rosas", stock: 3, price: 320, img:"/images/agua-rosas.jpg"},
-    {name: "Crema antiage con acido hialuronico", stock: 7, price: 460.5, img:"/images/crema-antiage-hialuronico.jpg"}
-]
-
+const ItemListContainer = ({products})=>{
     const getProducts = new Promise((resolve) => {
-        setTimeout(()=>{resolve(products)}, 2000)
+        setTimeout(()=>{resolve(products)}, 500)
     })
 
     const [items, setItems] = useState([])

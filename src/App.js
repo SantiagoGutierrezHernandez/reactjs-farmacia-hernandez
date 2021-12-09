@@ -1,16 +1,23 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import ItemListContainer from "./components/ItemListContainer"
-
-//Agregar color de fondo
-document.getElementsByTagName("body")[0].style.backgroundColor = "cornflowerblue"
+import ItemDetailContainer from "./components/ItemDetailContainer"
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import getProducts from "./components/Products"
+import CartSection from './components/CartSection';
 
 //Estructura del HTML
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <ItemListContainer/>
+      <BrowserRouter>
+        <Navbar/>
+        <Routes>
+          <Route exact path="/" element={<ItemListContainer products={getProducts()}/>}/>
+          <Route path="/item/:itemId" element={<ItemDetailContainer/>}/>
+          <Route path="/cart" element={<CartSection/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
