@@ -1,10 +1,10 @@
 import Item from "./Item"
 
-const ItemList = ({items, loadDetails}) => {
+const ItemList = ({items}) => {
     return (<ul className="d-flex flex-wrap">
             {items.map((item)=>{
                 return (
-                    <Item item={item} loadDetails={loadDetails}/>
+                    <Item key={item.name} item={item}/>
                 )
             })}
         </ul>)

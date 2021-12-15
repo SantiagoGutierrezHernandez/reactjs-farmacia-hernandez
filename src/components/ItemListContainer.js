@@ -1,5 +1,6 @@
 import ItemList from "./ItemList"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const ItemListContainer = ({products})=>{
     const getProducts = new Promise((resolve) => {
@@ -13,9 +14,10 @@ const ItemListContainer = ({products})=>{
     })
 
     return (
-        <container>
+        <div>
             <ItemList items={items}/>
-        </container>
+            <Link to="/cart">Terminar compra</Link>
+        </div>
     )
 }
 

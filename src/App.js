@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import ItemListContainer from "./components/ItemListContainer"
 import ItemDetailContainer from "./components/ItemDetailContainer"
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import getProducts from "./components/Products"
+import getProducts from "./utils/Products"
 import CartSection from './components/CartSection';
 
 //Estructura del HTML

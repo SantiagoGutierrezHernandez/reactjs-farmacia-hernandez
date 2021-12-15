@@ -9,7 +9,6 @@ const Item = ({item}) => {
             <p>${item.price}</p>
             <ItemCount stock={item.stock} initial={1}/>
             <Link to={`/item/${item.id}`} style={{backgroundColor:"rgb(239, 239, 239)",border:"cornflowerblue 1px solid", borderRadius:"1rem", padding:"1px 6px", color:"black", fontStyle:"normal", fontWeight:"normal"}}>Ver Detalles</Link>
-            <button onClick={()=>{console.log(item.name + " agregado al carrito")}} style={{border:"cornflowerblue 1px solid", borderRadius:"1rem"}}>Agregar al carrito</button>
         </li>
     )
 }
