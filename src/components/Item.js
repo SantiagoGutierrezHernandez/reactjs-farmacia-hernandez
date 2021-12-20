@@ -7,7 +7,7 @@ const Item = ({item}) => {
             <p>{item.name}</p>
             <img style={{width:"25rem"}} src={process.env.PUBLIC_URL + item.img} alt={item.name}></img>
             <p>${item.price}</p>
-            <ItemCount stock={item.stock} initial={1}/>
+            <ItemCount item={item} stock={item.stock} initial={1}/>
             <Link to={`/item/${item.id}`} style={{backgroundColor:"rgb(239, 239, 239)",border:"cornflowerblue 1px solid", borderRadius:"1rem", padding:"1px 6px", color:"black", fontStyle:"normal", fontWeight:"normal"}}>Ver Detalles</Link>
         </li>
     )
