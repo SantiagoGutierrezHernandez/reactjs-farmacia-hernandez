@@ -1,18 +1,44 @@
 import ItemList from "./ItemList"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import {collection, getDocs, getFirestore, query, limit, where} from "firebase/firestore"
+import { useEffect } from "react/cjs/react.development"
+import { useParams } from "react-router-dom"
+const ItemListContainer = ()=>{
+    const [items, setItems] = useState(false)
 
-const ItemListContainer = ({products})=>{
-    const getProducts = new Promise((resolve) => {
-        setTimeout(()=>{resolve(products)}, 500)
-    })
 
-    const [items, setItems] = useState([])
     
-    getProducts.then(result => {
-        setItems(result)
-    })
+    /*CATEGORIAS ACTUALES PARA PRUEBAS:
+    Económico
+    Crema
+    Preparado
+    */
+    const {categoryId} = useParams()
 
+    useEffect(()=>{
+        const db= getFirestore();
+
+        //Si no hay parametro no buscamos por categoria
+        let q = null
+        if(!categoryId)
+            q = query(
+                collection(db, "items"),
+                limit(20)
+            )
+        else
+            q = query(
+                collection(db, "items"),
+                where("category", "array-contains", categoryId),
+                limit(20)
+            )
+        getDocs(q).then(snapshot =>{
+            setItems(snapshot.docs.map(doc => ({id: doc.id, ...doc.data()})))
+        })
+    }, [categoryId])
+
+    if(!items)
+        return (<div>Cargando...</div>)
     return (
         <div>
             <ItemList items={items}/>

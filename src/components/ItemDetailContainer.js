@@ -1,21 +1,39 @@
 import ItemDetail from "./ItemDetail"
 import { useState, useEffect } from "react"
-import getProducts from "../utils/Products"
 import { useParams } from "react-router-dom"
+import { getFirestore, getDocs, collection} from "firebase/firestore"
 
 const ItemDetailContainer = ()=>{
     const {itemId} = useParams()
 
     const [details, setDetails] = useState(undefined)
     
-    const getDetails = new Promise((resolve) => {
-        setTimeout(()=>{resolve(getProducts()[itemId])}, 2000)
-    })
-    
     //Al cambiar el item parametro, volvemos a obtener los detalles
     useEffect(()=>{
-        getDetails.then(result =>{
-            setDetails(result)
+        const db= getFirestore();
+        
+        const itemsCollection = collection(db, "items")
+
+        /* Había intentado utilizando query con el id, pero ya que no funcionaba
+        (Habia puesto algo similar a where("id", "==", itemId), limit(1)), 
+        tome la base de datos y agarre solo el item
+        que coincide manualmente con un iterador*/
+
+        getDocs(itemsCollection).then(snapshot =>{
+            let match = false
+
+            //Buscamos una coincidencia con el id
+            snapshot.docs.forEach(doc =>{
+                if(!match && doc.id === itemId)
+                {
+                    setDetails({id: doc.id, ...doc.data()})
+                    match = true;
+                }
+            })
+            if(!match){
+                console.log(`No se encontro ningun item con el id ${itemId}`)
+                setDetails(undefined)
+            }
         })
     }, [itemId])
     

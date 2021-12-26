@@ -12,7 +12,6 @@ const CartProvider = ({defaultValue = [], children})=>{
         //Hacemos que se agreguen los elementos al carrito escuchando eventos
         add("onAdd", (e)=>{
             addItem(e.detail.item, e.detail.amount)
-            console.log(cart)
             //Unificamos eventos del carrito en uno por si solo necesitamos saber si cambió
             add("cartAdd", ()=>{fire("cartChange", null)})
             add("cartRemove", ()=>{fire("cartChange", null)})
