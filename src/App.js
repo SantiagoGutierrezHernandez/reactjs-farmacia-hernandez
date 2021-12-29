@@ -7,7 +7,7 @@ import CartSection from './components/CartSection';
 import CartProvider from './components/CartContext';
 
 //Inicializacion de firebase
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAwU5V7H6FxXecskA1otTOadBZDkgnJMZo",

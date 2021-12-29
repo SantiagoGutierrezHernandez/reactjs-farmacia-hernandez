@@ -2,6 +2,7 @@ import ItemDetail from "./ItemDetail"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { getFirestore, getDocs, collection} from "firebase/firestore"
+import { Link } from "react-router-dom"
 
 const ItemDetailContainer = ()=>{
     const {itemId} = useParams()
@@ -13,6 +14,12 @@ const ItemDetailContainer = ()=>{
         const db= getFirestore();
         
         const itemsCollection = collection(db, "items")
+
+        /* const q = query(
+            collection(db, "items"),
+            where("id", "==", itemId),
+            limit(1)
+        ) */
 
         /* Había intentado utilizando query con el id, pero ya que no funcionaba
         (Habia puesto algo similar a where("id", "==", itemId), limit(1)), 
@@ -41,8 +48,11 @@ const ItemDetailContainer = ()=>{
 
     return (
         <div style={{position:"fixed", top:0, left:0,height:"100vh", width:"100vw",backgroundColor:"rgba(0,0,0,0.2)"}}>
-            <p>Detalles:</p>
-            <ItemDetail details={details} onClose={()=>{setDetails(undefined)}}/>
+            <div style={{margin:"0px 5rem",padding:"5rem", backgroundColor:"lightgray", borderRadius:"1rem"}}>
+                <p>Detalles:</p>
+                <ItemDetail details={details} onClose={()=>{setDetails(undefined)}}/>
+                <Link to="/cart">Ir al carrito</Link>
+            </div>
         </div>
     )
 }

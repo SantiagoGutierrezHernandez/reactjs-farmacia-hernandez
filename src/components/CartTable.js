@@ -3,15 +3,20 @@ import { CartContext } from "./CartContext"
 import CartItem from "./CartItem"
 import { Link } from "react-router-dom"
 import { useEffect } from "react/cjs/react.development"
+import { add } from "../utils/EventManager"
 
 const CartTable = () => {
     const cartCtx = useContext(CartContext)
     const [items, setItems] = useState([])
 
+    useEffect(()=>{
+        add("cartChange", cartUpdate);
+    }, [])
     //Mount y cambio de prop
     useEffect(()=>{
         cartUpdate()
     }, [cartCtx.cart])
+
 
     const cartUpdate = ()=>{
         setItems(cartCtx.cart.map((elem)=>{

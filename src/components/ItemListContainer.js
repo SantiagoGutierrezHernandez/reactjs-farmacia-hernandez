@@ -7,8 +7,6 @@ import { useParams } from "react-router-dom"
 const ItemListContainer = ()=>{
     const [items, setItems] = useState(false)
 
-
-    
     /*CATEGORIAS ACTUALES PARA PRUEBAS:
     Económico
     Crema

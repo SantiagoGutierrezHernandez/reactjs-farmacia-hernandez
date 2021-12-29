@@ -1,3 +1,4 @@
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 import React from "react";
 import { useEffect, useState } from "react/cjs/react.development";
 import {add, fire} from "../utils/EventManager"
@@ -26,21 +27,48 @@ const CartProvider = ({defaultValue = [], children})=>{
     const addItem = (item, amount) =>{
         //Si la cantidad no es valida ignoramos todo y retornamos, ahorrandonos crear variables
         if(amount < 1) return;
+
+        //Hacemos una consulta al servidor para averiguar el stock
+        const db = getFirestore()
+        const itemsCollection = collection(db, "items")
+
+        let stock = 0
+
+        getDocs(itemsCollection).then(snapshot =>{
+            let match = false
+
+            //Buscamos una coincidencia con el id
+            snapshot.docs.forEach(doc =>{
+                if(!match && doc.id === item.id)
+                {
+                    match = true;
+                    stock = doc.data().stock
+                }
+            })
+            if(!match){
+                console.log(`No se encontro ningun item con el id ${item.id}`)
+            }
+
+            const itemIndex = cartFind(item.name)
+        
+            //Si se encuentra en el carrito sumamos la cantidad y terminamos la funcion
+            if(itemIndex !== -1)
+            {
+                //Encontramos por cuanto supera la cantidad al stock, y arreglamos la cantidad
+                let newAmount = amount
+                let diff = cart[itemIndex].amount + amount - stock
+                if(diff > 0) newAmount -= diff
     
-        const itemIndex = cartFind(item.name)
-    
-        //Si se encuentra en el carrito sumamos la cantidad y terminamos la funcion
-        if(itemIndex !== -1)
-        {
-            cart[itemIndex].amount += amount;
+                cart[itemIndex].amount += newAmount;
+                setCart(cart)
+                fire("cartAdd", {item:item, amount:amount})
+                return;
+            }
+            //Sino, lo agregamos al carrito
+            cart.push({item:item, amount: amount})
             setCart(cart)
             fire("cartAdd", {item:item, amount:amount})
-            return;
-        }
-        //Sino, lo agregamos al carrito
-        cart.push({item:item, amount: amount})
-        setCart(cart)
-        fire("cartAdd", {item:item, amount:amount})
+        })
     }
     
     //Remover el item si existe
@@ -71,6 +99,7 @@ const CartProvider = ({defaultValue = [], children})=>{
     //Vaciar el carrito
     const clear = ()=>{
         cart.splice(0, cart.length)
+        fire("cartChange", null)
     }
 
     return(

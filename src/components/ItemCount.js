@@ -3,15 +3,11 @@ import Counter from "./Counter";
 import {add, fire} from "../utils/EventManager"
 import { Link } from "react-router-dom";
 import { CartContext } from "./CartContext";
+import { clamp } from "../utils/Maths";
 
 const ItemCount = ({item, stock, initial})=>{
     const cartCtx = useContext(CartContext)
-    //Funcion de utilidad para hacer que el numero se mantenga entre dos valores
-    const clamp = (number, min, max) => {
-        if(number > max) return max;
-        if(number < min) return min;
-        return number;
-    }
+    
     //Estado de la cantidad
     const [amount, setAmount] = useState(clamp(initial, 1, stock))
 
@@ -27,7 +23,6 @@ const ItemCount = ({item, stock, initial})=>{
     //Si la cantidad es la misma que el stock no dejamos que se agreguen mas
     if(cartAmount >= stock) return <div><Link to="/cart">Cantidad máxima. Terminar compra?</Link><br/></div>
     //Creación del elemento 
-    //TODO: prohibir que la cantidad del counter + la del carrito exceda el stock
     return (
         <div>
             <div className="d-flex align-items-center justify-content-center"
