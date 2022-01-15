@@ -24,7 +24,7 @@ Antes de comenzar a utilizar el proyecto se debe hacer un servidor en (FireBase)
 
 ### Organización de componentes
 
-En el proyecto dividí los componentes en 3 tipos y según ello los dividi en sus respectivas carpetas:
+En el proyecto dividí los componentes en 3 tipos y según ello los separé en sus respectivas carpetas:
 
 - Presentación, los cuales se encargan principalmente de renderizar y tienen lógica casi nula.
 - Contenedores, cuyo fin es procesar los datos para pasarselos a los de presentación.
