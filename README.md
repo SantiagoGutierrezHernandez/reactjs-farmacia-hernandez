@@ -2,8 +2,8 @@
 
 Este proyecto fue realizado con el fin de aprender a utilizar ReactJs. Para poder utilizarlo se necesitan las siguientes herramientas:  
 
-1. Se debe tener (Node.js)[https://nodejs.org/en/] instalado en el dispositivo.
-2. Se requiere algun editor de código. Personalmente utilicé (Visual Studio Code)[https://code.visualstudio.com/].
+1. Se debe tener [Node.js](https://nodejs.org/en/) instalado en el dispositivo.
+2. Se requiere algun editor de código. Personalmente utilicé [Visual Studio Code](https://code.visualstudio.com/).
 3. Correr `npm init` para crear la carpeta del proyecto con todas las herramientas a utilizar.
 4. Correr `npx create-react-app nombre-de-app`. 
 5. Instalar las siguientes dependencias con `npm install`:
@@ -13,7 +13,7 @@ Este proyecto fue realizado con el fin de aprender a utilizar ReactJs. Para pode
 
 ## Environment
 
-Antes de comenzar a utilizar el proyecto se debe hacer un servidor en (FireBase)[https://firebase.google.com/], y con los datos que firebase le dará, crear en el directorio base de la app un archivo .env que tenga el siguiente formato para poder acceder a los items que haya cargado en el.
+Antes de comenzar a utilizar el proyecto se debe hacer un servidor en [FireBase](https://firebase.google.com/), y con los datos que firebase le dará, crear en el directorio base de la app un archivo .env que tenga el siguiente formato para poder acceder a los items que haya cargado en el.
 
     REACT_APP_apiKey=qwertyuiopasdfghjkl
     REACT_APP_authDomain=nombre-de-su-app.firebaseapp.com
