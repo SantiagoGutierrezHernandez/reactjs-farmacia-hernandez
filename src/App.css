@@ -47,7 +47,7 @@ html {
 /*Establecer una fuente predeterminada para el html*/
 body {
   font-family: "Roboto", sans-serif;
-  background-color: cornflowerblue;
+  background-color: #ececec;
 }
 
 /*Hacer que al entrar a la página el fondo del título cambie gradualmente y poner altura minima*/
@@ -103,9 +103,6 @@ p, a, li {
   font-size: 1.6rem;
 }
 
-form{
-  font-size: 1.6rem;
-}
 /*=====================SECCION DE IDs===============================*/
 #no-results{
   color: white;
@@ -174,11 +171,16 @@ form{
 #last-page{
   font-size: 1.6rem;
 }
+#filter-form{
+  font-size: 1.6rem;
+}
 /*=====================SECCION DE CLASES============================*/
 /*Estilizar la barra de navegación*/
 .nav-box {
   z-index: 10;
   transition: 0.25s transform ease-in-out;
+  position: sticky;
+  top: 0%;
 }
 .nav-box .nav-item {
   transition: background-color 0.25s ease-in-out;
@@ -208,6 +210,13 @@ form{
 .nav-box .nav-item:hover .nav-border-bottom, .nav-box .nav-item:focus .nav-border-bottom {
   background-color: white;
   transform: scaleX(1);
+}
+
+.nav-current .nav-text{
+  color: gray !important;
+}
+.nav-current .nav-border-bottom{
+  background-color: gray !important;
 }
 /*Cambiar el color de parrafos largos*/
 .description {
@@ -366,6 +375,7 @@ form{
 
 .button-dark {
   background-color: #553528;
+  color: white;
   transition: 0.2s background-color;
   font-size: 1.6rem;
   padding: 1rem;
@@ -449,6 +459,25 @@ form{
 .page-arrow:hover{
   color: darkgrey;
 }
+/*Estilo del carrito*/
+.cart-form{
+  padding: 1rem;
+  font-size: 1.6rem;
+}
+/*Listas de categorias de items*/
+.list-unstyled{
+  list-style-type:none;
+}
+.category-list{
+  margin: 1rem auto;
+  background-color: #ececec;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: none;
+}
+.category-item{
+  width: 100%;
+}
 /*=====================SECCION DE ANIMACIONES=======================*/
 @keyframes logo-rotate {
   0% {
@@ -469,16 +498,18 @@ form{
 }
 
 /*=====================MEDIA QUERIES================================*/
-/*Eliminar la barra en dispositivos en los que podria obstruir gran parte de la pantalla*/
-@media only screen and (max-width: 250px) {
-  .nav-box {
-    display: none !important;
-  }
-}
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 576px) {
   /*Evitar que el header quede más pequeño que el título*/
   header {
     min-height: max-content;
+  }
+  /*Hacer que el navbar no exceda el ancho maximo del body y que no sea sticky asi no obstruye*/
+  .nav-box{
+    width: 100%;
+    position: static;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
 }
 @media only screen and (max-width: 768px) {
